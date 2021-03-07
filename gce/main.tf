@@ -2,6 +2,10 @@ variable "subnet_self_link" {
   type = string
 }
 
+variable "project" {
+  type = string
+}
+
 module "gce_sample" {
   source = "github.com/AtsushiKitano/assets/terraform/gcp/modules/compute/gce"
 
@@ -20,6 +24,6 @@ module "gce_sample" {
     image     = "ubuntu-os-cloud/ubuntu-2004-lts"
   }
 
-  project = "ca-kitano-study-sandbox"
+  project = var.project
 }
 

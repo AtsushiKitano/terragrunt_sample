@@ -1,7 +1,11 @@
+variable "project" {
+  type = string
+}
+
 module "network" {
   source = "github.com/AtsushiKitano/assets/terraform/gcp/modules/network/vpc_network"
 
-  project = "ca-kitano-study-sandbox"
+  project = var.project
 
   vpc_network = {
     name = terraform.workspace
