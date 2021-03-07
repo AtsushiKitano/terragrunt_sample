@@ -1,21 +1,21 @@
 steps:
   - id: 'create prd workspace'
     name: 'alpine/terragrunt'
-    args: ['terragrunt', 'run-all', 'workspace', 'select', 'prd']
+    args: ['terragrunt', 'run-all', 'workspace', 'new', 'prd']
     env:
       - 'SKIP_OUTPUT=true'
       - 'TF_VAR_project=$PROJECT_ID'
 
   - id: 'create stg workspace'
     name: 'alpine/terragrunt'
-    args: ['terragrunt', 'run-all', 'workspace', 'select', 'stg']
+    args: ['terragrunt', 'run-all', 'workspace', 'new', 'stg']
     env:
       - 'SKIP_OUTPUT=true'
       - 'TF_VAR_project=$PROJECT_ID'
 
   - id: 'create dev workspace'
     name: 'alpine/terragrunt'
-    args: ['terragrunt', 'run-all', 'workspace', 'select', 'dev']
+    args: ['terragrunt', 'run-all', 'workspace', 'new', 'dev']
     env:
       - 'SKIP_OUTPUT=true'
       - 'TF_VAR_project=$PROJECT_ID'
