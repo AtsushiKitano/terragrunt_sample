@@ -1,0 +1,14 @@
+steps:
+  - id: 'terraform workspace select'
+    name: 'alpine/terragrunt'
+    args: ['terragrunt', 'run-all', 'workspace', 'select', 'stg']
+    env:
+      - 'SKIP_OUTPUT=true'
+      - 'TF_VAR_project=$PROJECT_ID'
+
+  - id: 'terragrunt destroy'
+    name: 'alpine/terragrunt'
+    args: ['terragrunt', 'run-all', 'destroy', '--terragrunt-non-interactive']
+    env:
+      - 'SKIP_OUTPUT=false'
+      - 'TF_VAR_project=$PROJECT_ID'
