@@ -7,6 +7,14 @@ steps:
       - 'TF_VAR_project=$PROJECT_ID'
       - 'ENV=prd'
 
+  - id: 'delete gce/backend.tf @prd'
+    name: 'ubuntu'
+    args: ['rm', '-f', 'gce/backend.tf']
+
+  - id: 'delete network/backend.tf @prd'
+    name: 'ubuntu'
+    args: ['rm', '-f', 'network/backend.tf']
+
   - id: 'create stg workspace'
     name: 'alpine/terragrunt'
     args: ['terragrunt', 'run-all', 'workspace', 'new', 'stg']
@@ -15,6 +23,15 @@ steps:
       - 'TF_VAR_project=$PROJECT_ID'
       - 'ENV=stg'
 
+  - id: 'delete gce/backend.tf @stg'
+    name: 'ubuntu'
+    args: ['rm', '-f', 'gce/backend.tf']
+
+  - id: 'delete network/backend.tf @stg'
+    name: 'ubuntu'
+    args: ['rm', '-f', 'network/backend.tf']
+
+
   - id: 'create dev workspace'
     name: 'alpine/terragrunt'
     args: ['terragrunt', 'run-all', 'workspace', 'new', 'dev']
@@ -22,3 +39,11 @@ steps:
       - 'SKIP_OUTPUT=true'
       - 'TF_VAR_project=$PROJECT_ID'
       - 'ENV=dev'
+
+  - id: 'delete gce/backend.tf @dev'
+    name: 'ubuntu'
+    args: ['rm', '-f', 'gce/backend.tf']
+
+  - id: 'delete network/backend.tf @dev'
+    name: 'ubuntu'
+    args: ['rm', '-f', 'network/backend.tf']
