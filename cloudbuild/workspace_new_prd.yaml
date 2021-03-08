@@ -1,0 +1,11 @@
+steps:
+  - id: 'create prd workspace'
+    name: 'alpine/terragrunt'
+    args: ['terragrunt', 'run-all', 'workspace', 'new', '${_ENV}']
+    env:
+      - 'SKIP_OUTPUT=true'
+      - 'TF_VAR_project=$PROJECT_ID'
+      - 'ENV=${_ENV}'
+
+substitutions:
+  _ENV: prd
