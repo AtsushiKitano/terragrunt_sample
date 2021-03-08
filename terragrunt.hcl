@@ -2,7 +2,7 @@ remote_state {
   backend = "gcs"
 
   config = {
-    bucket = "ca-kitano-study-sandbox-state"
+    bucket = "${get_env("TF_VAR_project")}-state"
     prefix = "terragrunt/${path_relative_to_include()}"
   }
 }
@@ -12,7 +12,7 @@ generate "provider" {
   if_exists = "overwrite_terragrunt"
   contents = <<EOF
 provider "google" {
-  project = "ca-kitano-study-sandbox"
+  project = "${get_env("TF_VAR_project")}"
 }
 EOF
 }
