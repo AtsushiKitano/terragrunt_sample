@@ -2,7 +2,7 @@ remote_state {
   backend = "gcs"
 
   config = {
-    bucket = "${get_env("TF_VAR_project")}-state"
+    bucket = "${get_env("TF_VAR_project")}-state-${get_enf("ENV")}"
     prefix = "terragrunt/${path_relative_to_include()}"
   }
 }
