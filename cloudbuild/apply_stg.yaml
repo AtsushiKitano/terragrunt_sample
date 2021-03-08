@@ -13,6 +13,7 @@ steps:
     env:
       - 'SKIP_OUTPUT=true'
       - 'TF_VAR_project=$PROJECT_ID'
+      - 'ENV=${_ENV}'
 
   - id: 'terragrunt apply'
     name: 'alpine/terragrunt'
@@ -20,6 +21,7 @@ steps:
     env:
       - 'SKIP_OUTPUT=false'
       - 'TF_VAR_project=$PROJECT_ID'
+      - 'ENV=${_ENV}'
 
 substitutions:
   _ENV: stg
