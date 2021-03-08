@@ -5,6 +5,7 @@ steps:
     env:
       - 'SKIP_OUTPUT=true'
       - 'TF_VAR_project=$PROJECT_ID'
+      - 'ENV=prd'
 
   - id: 'create stg workspace'
     name: 'alpine/terragrunt'
@@ -12,6 +13,7 @@ steps:
     env:
       - 'SKIP_OUTPUT=true'
       - 'TF_VAR_project=$PROJECT_ID'
+      - 'ENV=stg'
 
   - id: 'create dev workspace'
     name: 'alpine/terragrunt'
@@ -19,3 +21,4 @@ steps:
     env:
       - 'SKIP_OUTPUT=true'
       - 'TF_VAR_project=$PROJECT_ID'
+      - 'ENV=dev'
